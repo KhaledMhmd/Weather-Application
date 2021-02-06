@@ -1,0 +1,12 @@
+.pastDay {
+  background-color: rgb(160, 175, 189);
+  margin-left: 60px;
+  margin-top: 20px;
+}
+.top-buffer {
+  margin-top: 100px;
+}
+
+button {
+  margin-top: 30px;
+}
