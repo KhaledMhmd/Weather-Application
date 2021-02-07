@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { GetLocationService } from '../get-location.service';
-import { GetWeatherService } from '../get-weather.service';
+import { GetLocationService } from 'src/app/get-location.service';
+import { GetWeatherService } from 'src/app/get-weather.service';
 
 @Component({
-  selector: 'app-landing-view',
-  templateUrl: './landing-view.component.html',
-  styleUrls: ['./landing-view.component.css'],
+  selector: 'app-weather-card',
+  templateUrl: './weather-card.component.html',
+  styleUrls: ['./weather-card.component.css'],
 })
-export class LandingViewComponent implements OnInit {
+export class WeatherCardComponent implements OnInit {
   city: string = '';
-  country: string = '';
   lat: any;
   lng: any;
   date: any;
-  highTemp: any;
-  lowTemp: any;
+  temp: any;
+  altTemp: any;
+  humidity: any;
+  wind: any;
 
   constructor(
-    private router: Router,
     private getLocationService: GetLocationService,
     private getWeatherService: GetWeatherService
   ) {}
@@ -35,14 +34,14 @@ export class LandingViewComponent implements OnInit {
             .subscribe((data) => {
               const topLocation = data.search_api.result[0];
               this.city = topLocation.region[0].value;
-              this.country = topLocation.country[0].value;
               this.getWeatherService
                 .onWeatherGet(this.city)
                 .subscribe((data) => {
-                  this.highTemp = data.data.weather[0].maxtempC;
-                  this.lowTemp = data.data.weather[0].mintempC;
                   this.date = data.data.time_zone[0].localtime;
-                  console.log(this.date);
+                  this.temp = data.data.current_condition[0].temp_C;
+                  this.altTemp = data.data.current_condition[0].FeelsLikeC;
+                  this.humidity = data.data.current_condition[0].humidity;
+                  this.wind = data.data.current_condition[0].windspeedKmph;
                 });
             });
         },
@@ -51,12 +50,5 @@ export class LandingViewComponent implements OnInit {
         }
       );
   }
-  onLocationRequest() {
-    this.router.navigate(['/more/' + this.city]);
-  }
+  // &format=json&num_of_days=7&showlocaltime=yes
 }
-
-// //                  this.date = data.data.time_zone[0].localtime
-// .replaceAll('-', ' ')
-// .replaceAll(':', ' ')
-// .split(' ');
