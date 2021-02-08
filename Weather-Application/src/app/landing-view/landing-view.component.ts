@@ -14,8 +14,10 @@ export class LandingViewComponent implements OnInit {
   lat: any;
   lng: any;
   date: any;
-  highTemp: any;
-  lowTemp: any;
+  weatherDays: any;
+  weatherDesc: string = '';
+  currentDate: any;
+  currentTime: any;
 
   constructor(
     private router: Router,
@@ -24,6 +26,24 @@ export class LandingViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const today = new Date();
+    const options = {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    };
+    this.currentDate = new Intl.DateTimeFormat('en-US', options).format(today);
+    console.log(this.currentDate);
+
+    const now = new Date();
+    const option = {
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    this.currentTime = new Intl.DateTimeFormat('en-US', option).format(now);
+    console.log(this.currentTime);
+
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -39,10 +59,29 @@ export class LandingViewComponent implements OnInit {
               this.getWeatherService
                 .onWeatherGet(this.city)
                 .subscribe((data) => {
-                  this.highTemp = data.data.weather[0].maxtempC;
-                  this.lowTemp = data.data.weather[0].mintempC;
+                  this.weatherDesc = data.data.current_condition[0].weatherDesc[0].value.toUpperCase();
+                  this.weatherDays = data.data.weather.map((x: any) => {
+                    const container = {
+                      day: '',
+                      maxTemp: 3,
+                      minTemp: 2,
+                      weatherDescription: '',
+                    };
+
+                    const dayFormatted = new Date(x.date)
+                      .toDateString()
+                      .split(' ')[0];
+
+                    container.day = dayFormatted;
+                    container.maxTemp = x.maxtempC;
+                    container.minTemp = x.mintempC;
+                    container.weatherDescription =
+                      x.hourly[4].weatherDesc[0].value;
+
+                    return container;
+                  });
+
                   this.date = data.data.time_zone[0].localtime;
-                  console.log(this.date);
                 });
             });
         },
@@ -55,8 +94,3 @@ export class LandingViewComponent implements OnInit {
     this.router.navigate(['/more/' + this.city]);
   }
 }
-
-// //                  this.date = data.data.time_zone[0].localtime
-// .replaceAll('-', ' ')
-// .replaceAll(':', ' ')
-// .split(' ');

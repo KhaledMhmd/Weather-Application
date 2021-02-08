@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+nav {
+  background-color: transparent;
+  font-family: Helvetica, sans-serif;
+}
+
+.searchButton {
+  color: #ffffff;
+  border: #ffffff solid 1px;
+}
+.pageTitle {
+  font-size: 1.5rem;
+  font-family: Bebas Neue, sans-serif;
+}

@@ -1,15 +1,17 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand">Weather</a>
+<nav class="navbar navbar-dark">
+  <a class="pageTitle navbar-brand">MYWEATHER</a>
   <form class="form-inline">
     <input
-      class="form-control mr-sm-2"
+      class="form-control mr-sm-2 searchInput"
       type="search"
       placeholder="Search for a location"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Search for a location'"
       aria-label="Search"
       #cityInput
     />
     <button
-      class="btn btn-outline-secondary my-2 my-sm-0"
+      class="btn searchButton btn-outline-secondary my-2 my-sm-0"
       (click)="onSearch(cityInput.value)"
     >
       Search

@@ -16,6 +16,7 @@ export class WeatherCardComponent implements OnInit {
   altTemp: any;
   humidity: any;
   wind: any;
+  weatherDesc: string = '';
 
   constructor(
     private getLocationService: GetLocationService,
@@ -42,6 +43,8 @@ export class WeatherCardComponent implements OnInit {
                   this.altTemp = data.data.current_condition[0].FeelsLikeC;
                   this.humidity = data.data.current_condition[0].humidity;
                   this.wind = data.data.current_condition[0].windspeedKmph;
+                  this.weatherDesc =
+                    data.data.current_condition[0].weatherDesc[0].value;
                 });
             });
         },
@@ -50,5 +53,4 @@ export class WeatherCardComponent implements OnInit {
         }
       );
   }
-  // &format=json&num_of_days=7&showlocaltime=yes
 }

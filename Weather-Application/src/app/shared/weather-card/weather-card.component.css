@@ -1,0 +1,36 @@
+.weatherIcon {
+  width: 50px;
+}
+
+.table-striped > tbody > tr:nth-child(2n + 1) > td,
+.table-striped > tbody > tr:nth-child(2n + 1) > th {
+  background-color: transparent;
+  border: none;
+}
+.table-striped > tbody > tr:nth-child(2n) > td,
+.table-striped > tbody > tr:nth-child(2n) > th {
+  background-color: #321a8f;
+  border: none;
+}
+
+.table-striped > thead {
+  background-color: #321a8f;
+  border: none;
+}
+
+.table-striped {
+  /* background-color: #321a8f; */
+  border: none;
+}
+.cardTitle {
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.tableValue {
+  text-align: center;
+}
+/* .table-nonfluid {
+  width: 400px !important;
+} */

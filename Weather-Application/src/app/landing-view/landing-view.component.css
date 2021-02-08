@@ -1,12 +1,45 @@
 .pastDay {
-  background-color: rgb(160, 175, 189);
-  margin-left: 60px;
-  margin-top: 20px;
+  background-color: transparent;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 160px;
 }
 .top-buffer {
   margin-top: 100px;
 }
 
-button {
-  margin-top: 30px;
+.dayTitle {
+  text-align: center;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.dayMaxMin {
+  text-align: center;
+}
+.weatherDescTitle {
+  font-size: medium;
+}
+.currentTime {
+  margin-top: 50px;
+}
+
+.currentDay,
+.currentTime {
+  font-weight: bold;
+}
+.currentDay {
+  margin-bottom: 40px;
+}
+
+.weatherIcon {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.moreButton {
+  background-color: #2d0fa2 !important;
+  color: #ffffff;
+  margin-bottom: 20px;
 }
