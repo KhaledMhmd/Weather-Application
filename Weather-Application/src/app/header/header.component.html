@@ -1,12 +1,12 @@
 <nav class="navbar navbar-dark">
-  <a class="pageTitle navbar-brand">MYWEATHER</a>
+  <a [routerLink]="['/']" class="pageTitle navbar-brand" style="cursor: pointer"
+    >MYWEATHER</a
+  >
   <form class="form-inline">
     <input
       class="form-control mr-sm-2 searchInput"
       type="search"
       placeholder="Search for a location"
-      onfocus="this.placeholder = ''"
-      onblur="this.placeholder = 'Search for a location'"
       aria-label="Search"
       #cityInput
     />

@@ -8,10 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardViewComponent implements OnInit {
   location: string = '';
+  model: any;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.location = this.route.snapshot.params['city'];
+    const locationSmall = this.route.snapshot.params['city'];
+    this.location =
+      locationSmall.charAt(0).toUpperCase() + locationSmall.slice(1);
   }
 }

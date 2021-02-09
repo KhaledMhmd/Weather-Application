@@ -34,7 +34,6 @@ export class LandingViewComponent implements OnInit {
       year: 'numeric',
     };
     this.currentDate = new Intl.DateTimeFormat('en-US', options).format(today);
-    console.log(this.currentDate);
 
     const now = new Date();
     const option = {
@@ -42,7 +41,6 @@ export class LandingViewComponent implements OnInit {
       minute: 'numeric',
     };
     this.currentTime = new Intl.DateTimeFormat('en-US', option).format(now);
-    console.log(this.currentTime);
 
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
@@ -76,7 +74,7 @@ export class LandingViewComponent implements OnInit {
                     container.maxTemp = x.maxtempC;
                     container.minTemp = x.mintempC;
                     container.weatherDescription =
-                      x.hourly[4].weatherDesc[0].value;
+                      x.hourly[6].weatherDesc[0].value;
 
                     return container;
                   });

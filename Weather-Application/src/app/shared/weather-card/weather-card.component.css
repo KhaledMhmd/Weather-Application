@@ -19,7 +19,6 @@
 }
 
 .table-striped {
-  /* background-color: #321a8f; */
   border: none;
 }
 .cardTitle {
@@ -31,6 +30,15 @@
 .tableValue {
   text-align: center;
 }
-/* .table-nonfluid {
-  width: 400px !important;
-} */
+
+#datePicker {
+  color: #000000;
+}
+
+.goBtn {
+  color: #ffffff;
+  border: solid 1px #ffffff;
+  background-color: transparent;
+  margin-left: 5px;
+  border-radius: 10%;
+}

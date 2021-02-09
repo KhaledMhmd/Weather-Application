@@ -1,4 +1,7 @@
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetLocationService } from 'src/app/get-location.service';
 import { GetWeatherService } from 'src/app/get-weather.service';
 
@@ -8,6 +11,7 @@ import { GetWeatherService } from 'src/app/get-weather.service';
   styleUrls: ['./weather-card.component.css'],
 })
 export class WeatherCardComponent implements OnInit {
+  @ViewChild('dateInput', { static: false }) dateInputRef?: ElementRef;
   city: string = '';
   lat: any;
   lng: any;
@@ -17,13 +21,48 @@ export class WeatherCardComponent implements OnInit {
   humidity: any;
   wind: any;
   weatherDesc: string = '';
+  hWeatherDesc: string = '';
+  hTemp: any;
+  hAltTemp: any;
+  hHumidity: any;
+  hWind: any;
+  isDashboardView: boolean = false;
+  today: any = new Intl.DateTimeFormat('en-ZA', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  })
+    .format(new Date())
+    .replace('/', '-')
+    .replace('/', '-');
+
+  options: {} = {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  };
+  datePicked: any = new Intl.DateTimeFormat('en-US', this.options).format(
+    new Date()
+  );
+
+  datePassed: any;
+
+  isDatePicked: boolean = false;
+
+  isErrorFound: boolean = false;
 
   constructor(
     private getLocationService: GetLocationService,
-    private getWeatherService: GetWeatherService
+    private getWeatherService: GetWeatherService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    if (this.route.snapshot.routeConfig?.path?.includes('more')) {
+      this.isDashboardView = true;
+    }
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -34,23 +73,59 @@ export class WeatherCardComponent implements OnInit {
             .onLocationGet(this.lat, this.lng)
             .subscribe((data) => {
               const topLocation = data.search_api.result[0];
-              this.city = topLocation.region[0].value;
+              if (!this.isDashboardView) {
+                this.city = topLocation.region[0].value;
+              } else {
+                this.city = this.route.snapshot.params['city'];
+              }
+
               this.getWeatherService
                 .onWeatherGet(this.city)
                 .subscribe((data) => {
+                  const topLoca = data.data.current_condition[0];
+
                   this.date = data.data.time_zone[0].localtime;
-                  this.temp = data.data.current_condition[0].temp_C;
-                  this.altTemp = data.data.current_condition[0].FeelsLikeC;
-                  this.humidity = data.data.current_condition[0].humidity;
-                  this.wind = data.data.current_condition[0].windspeedKmph;
-                  this.weatherDesc =
-                    data.data.current_condition[0].weatherDesc[0].value;
+                  this.temp = topLoca.temp_C;
+                  this.altTemp = topLoca.FeelsLikeC;
+                  this.humidity = topLoca.humidity;
+                  this.wind = topLoca.windspeedKmph;
+                  this.weatherDesc = topLoca.weatherDesc[0].value;
                 });
             });
         },
-        function () {
-          alert('Could not get your current location');
+        () => {
+          this.router.navigate(['/location-error']);
         }
       );
+  }
+
+  onDatePicked() {
+    this.isDatePicked = true;
+    const date = this.dateInputRef?.nativeElement.value;
+
+    const day = new Date(date);
+
+    this.datePicked = new Intl.DateTimeFormat('en-US', this.options).format(
+      day
+    );
+    this.datePassed = new Intl.DateTimeFormat('en-ZA', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    })
+      .format(day)
+      .replace('/', '-')
+      .replace('/', '-');
+
+    this.getWeatherService
+      .onHistoricalGet(this.city, this.datePassed)
+      .subscribe((data) => {
+        const topLoc = data.data.weather[0].hourly[6];
+        this.hWeatherDesc = topLoc.weatherDesc[0].value;
+        this.hWind = topLoc.windspeedKmph;
+        this.hTemp = topLoc.tempC;
+        this.hHumidity = topLoc.humidity;
+        this.hAltTemp = topLoc.FeelsLikeC;
+      });
   }
 }
