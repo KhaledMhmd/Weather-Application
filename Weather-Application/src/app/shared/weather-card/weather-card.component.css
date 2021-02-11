@@ -24,6 +24,11 @@
 .cardTitle {
   vertical-align: middle;
   font-weight: bold;
+  font-size: 1rem;
+}
+.weatherTitle {
+  vertical-align: middle;
+  font-weight: bold;
   font-size: 1.3rem;
 }
 
@@ -33,6 +38,10 @@
 
 #datePicker {
   color: #000000;
+  border-radius: 5%;
+  outline: none;
+  border: none;
+  width: 70%;
 }
 
 .goBtn {
@@ -41,4 +50,12 @@
   background-color: transparent;
   margin-left: 5px;
   border-radius: 10%;
+}
+
+@media all and (min-width: 768px) {
+  .cardTitle {
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
 }

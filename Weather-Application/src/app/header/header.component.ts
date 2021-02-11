@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  country: string = '';
+
   constructor(private router: Router) {}
 
   ngOnInit() {}

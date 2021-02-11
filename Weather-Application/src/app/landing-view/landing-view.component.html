@@ -2,15 +2,17 @@
   <div class="col-md-7">
     <h6 class="currentTime">{{ this.currentTime }}</h6>
     <h6 class="currentDate">{{ this.currentDate }}</h6>
-    <h1>{{ this.city }}, {{ this.country }}</h1>
-    <h3 class="weatherDescTitle">{{ this.weatherDesc }}</h3>
+    <h1 class="pageTitle">{{ this.city }}, {{ this.country }}</h1>
+    <h3 class="weatherDescTitle d-none d-md-block">
+      {{ this.weatherDesc }}
+    </h3>
   </div>
   <div class="col-md-5">
     <app-weather-card></app-weather-card>
   </div>
 </div>
-<div class="row">
-  <div *ngFor="let weatherDay of weatherDays" class="pastDay">
+<div class="followingDays">
+  <div *ngFor="let weatherDay of weatherDays" class="followingDay">
     <p class="dayTitle">{{ weatherDay.day }}</p>
     <svg
       class="weatherIcon"
@@ -458,18 +460,15 @@
         </g>
       </g>
     </svg>
-    <p class="dayMaxMin">
-      <span>{{ weatherDay.maxTemp }}°C </span
-      ><span> &nbsp;{{ weatherDay.minTemp }}°C</span>
-    </p>
+    <div class="dayMaxMin">
+      <p class="dayMax">{{ weatherDay.maxTemp }}°C</p>
+      <p class="dayMin">{{ weatherDay.minTemp }}°C</p>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <button
-      class="btn moreButton mx-auto d-block"
-      (click)="onLocationRequest()"
-    >
+    <button class="btn moreButton mx-auto d-block" (click)="onMoreDetails()">
       More Details
     </button>
   </div>

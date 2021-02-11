@@ -1,20 +1,18 @@
-<nav class="navbar navbar-dark">
+<nav class="navbar navbar-dark navContainer">
   <a [routerLink]="['/']" class="pageTitle navbar-brand" style="cursor: pointer"
     >MYWEATHER</a
   >
   <form class="form-inline">
     <input
-      class="form-control mr-sm-2 searchInput"
+      class="form-control searchInput"
       type="search"
-      placeholder="Search for a location"
+      placeholder="City Name"
       aria-label="Search"
       #cityInput
     />
-    <button
-      class="btn searchButton btn-outline-secondary my-2 my-sm-0"
-      (click)="onSearch(cityInput.value)"
-    >
-      Search
+
+    <button class="searchButton btn" (click)="onSearch(cityInput.value)">
+      <i class="fa fa-search"></i>
     </button>
   </form>
 </nav>

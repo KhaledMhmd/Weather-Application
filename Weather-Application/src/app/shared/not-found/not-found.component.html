@@ -1,6 +1,9 @@
 <div class="contain">
   <h1 class="mx-auto error">
-    The city you entered could not be found! <br />
+    '{{ this.wrongCity }}' could not be found! <br />
     Please enter a valid city!
   </h1>
+  <button class="btn goBackBtn mx-auto d-block" (click)="onGoBackMain()">
+    Go Back To Home Page
+  </button>
 </div>

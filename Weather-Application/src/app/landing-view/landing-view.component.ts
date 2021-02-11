@@ -88,7 +88,7 @@ export class LandingViewComponent implements OnInit {
         }
       );
   }
-  onLocationRequest() {
+  onMoreDetails() {
     this.router.navigate(['/more/' + this.city]);
   }
 }

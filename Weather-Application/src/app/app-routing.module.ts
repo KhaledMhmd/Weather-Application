@@ -7,7 +7,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'more/:city', component: DashboardViewComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  { path: 'not-found/:wrongCity', component: NotFoundComponent },
   { path: 'location-error', component: LocationErrorComponent },
   { path: '', component: LandingViewComponent },
   { path: '**', component: LandingViewComponent },

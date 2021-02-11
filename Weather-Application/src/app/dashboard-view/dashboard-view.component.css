@@ -1,12 +1,25 @@
 .stats {
-  background-color: rgb(160, 175, 189);
+  background-color: transparent;
 }
 
 .top-buffer {
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 20px;
 }
 
 .contain {
-  height: 100vh;
+  background-attachment: scroll;
+}
+
+#chart {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.selection {
+  fill: none;
+}
+.graphTitle {
+  margin-bottom: 10px;
+  text-align: center;
 }

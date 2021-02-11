@@ -7,9 +7,33 @@ nav {
 
 .searchButton {
   color: #ffffff;
-  border: #ffffff solid 1px;
+  background-color: #170853;
 }
 .pageTitle {
   font-size: 1.5rem;
   font-family: Bebas Neue, sans-serif;
+}
+
+.searchInput {
+  width: 70%;
+}
+
+.form-inline {
+  justify-content: flex-end;
+  width: 55%;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media all and (min-width: 576px) {
+  .searchInput {
+    width: 80%;
+  }
+  .form-inline {
+    justify-content: flex-end;
+    width: 260px;
+  }
 }

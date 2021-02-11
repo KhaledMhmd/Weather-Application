@@ -3,3 +3,8 @@
   margin-top: 20%;
   text-align: center;
 }
+.goBackBtn {
+  background-color: #170853 !important;
+  color: #ffffff;
+  margin-top: 50px;
+}

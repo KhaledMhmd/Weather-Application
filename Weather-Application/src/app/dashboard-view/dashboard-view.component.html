@@ -1,16 +1,16 @@
 <div class="contain">
   <div class="row top-buffer">
-    <h1 class="mx-auto">{{ this.location }}</h1>
+    <h1 class="mx-auto">{{ this.city }}</h1>
   </div>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6 stats">
+      <canvas id="myChart" width="900" height="500"></canvas>
+    </div>
+    <div class="col-md-6 stats">
+      <figure id="bar"></figure>
+    </div>
+    <div class="col-md-5 mx-auto stats">
       <app-weather-card></app-weather-card>
-    </div>
-    <div class="col-md-3 stats">
-      <h3>Chart</h3>
-    </div>
-    <div class="col-md-3 offset-1 stats">
-      <h3>Graph</h3>
     </div>
   </div>
 </div>

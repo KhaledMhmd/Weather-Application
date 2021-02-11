@@ -13,6 +13,7 @@ import { GetWeatherService } from 'src/app/get-weather.service';
 export class WeatherCardComponent implements OnInit {
   @ViewChild('dateInput', { static: false }) dateInputRef?: ElementRef;
   city: string = '';
+
   lat: any;
   lng: any;
   date: any;
