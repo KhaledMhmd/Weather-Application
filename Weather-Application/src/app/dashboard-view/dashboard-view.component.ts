@@ -33,7 +33,11 @@ export class DashboardViewComponent implements OnInit {
   ngOnInit() {
     const citySmall = this.route.snapshot.params['city'];
     const inputCity = citySmall.charAt(0).toUpperCase() + citySmall.slice(1);
+    console.log(inputCity);
+
     this.getWeatherService.onWeatherGet(inputCity).subscribe((data) => {
+      console.log(data);
+
       if (data.data.error || data.data.request[0].type !== 'City') {
         this.city = '';
         this.router.navigate(['/not-found/' + inputCity]);
@@ -55,6 +59,7 @@ export class DashboardViewComponent implements OnInit {
 
           return container;
         });
+        console.log(this.weatherData);
 
         this.createSvg();
         this.drawBars(this.weatherData);
@@ -149,8 +154,9 @@ export class DashboardViewComponent implements OnInit {
       .style('fill', '#ffffff')
       .text('Weekly Average Temperature');
   }
-
   private drawBars(data: any[]): void {
+    const avgtempCArr = data.map((x: any) => +x.avgtempC);
+
     const x = d3
       .scaleBand()
       .range([0, this.width])
@@ -165,12 +171,11 @@ export class DashboardViewComponent implements OnInit {
       .attr('transform', 'translate(-10,0)rotate(-45)')
       .style('text-anchor', 'end');
 
+    const minValue: any = d3.min(avgtempCArr);
+    const maxValue: any = d3.max(avgtempCArr);
     const y = d3
       .scaleLinear()
-      .domain([
-        -3 + +d3.min(data, (d) => d.avgtempC),
-        1 + +d3.max(data, (d) => d.avgtempC),
-      ])
+      .domain([-3 + minValue, 1 + maxValue])
       .nice()
       .range([this.height, 0]);
 

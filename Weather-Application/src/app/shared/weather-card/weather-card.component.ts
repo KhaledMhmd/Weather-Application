@@ -1,7 +1,7 @@
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { GetLocationService } from 'src/app/get-location.service';
 import { GetWeatherService } from 'src/app/get-weather.service';
 
@@ -63,6 +63,9 @@ export class WeatherCardComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.routeConfig?.path?.includes('more')) {
       this.isDashboardView = true;
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        this.city = params.get('city') || '';
+      });
     }
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
@@ -76,8 +79,6 @@ export class WeatherCardComponent implements OnInit {
               const topLocation = data.search_api.result[0];
               if (!this.isDashboardView) {
                 this.city = topLocation.region[0].value;
-              } else {
-                this.city = this.route.snapshot.params['city'];
               }
 
               this.getWeatherService
