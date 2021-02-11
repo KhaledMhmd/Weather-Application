@@ -53,6 +53,7 @@ export class LandingViewComponent implements OnInit {
             .subscribe((data) => {
               const topLocation = data.search_api.result[0];
               this.city = topLocation.region[0].value;
+
               this.country = topLocation.country[0].value;
               this.getWeatherService
                 .onWeatherGet(this.city)

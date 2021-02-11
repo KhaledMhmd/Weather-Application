@@ -4,7 +4,7 @@
 
 .top-buffer {
   margin-top: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .contain {
@@ -13,13 +13,7 @@
 
 #chart {
   text-align: center;
-  margin-top: 40px;
 }
-
-.selection {
-  fill: none;
-}
-.graphTitle {
-  margin-bottom: 10px;
-  text-align: center;
+.weatherCard {
+  margin-top: -110px;
 }

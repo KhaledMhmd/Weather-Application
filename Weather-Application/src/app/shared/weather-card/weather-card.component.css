@@ -58,4 +58,8 @@
     font-weight: bold;
     font-size: 1.3rem;
   }
+
+  #datePicker {
+    width: 40%;
+  }
 }

@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <tbody>
     <tr *ngIf="isDashboardView">
+      <td class="cardTitle">{{ this.datePicked }}</td>
       <td class="tableValue datePick">
         <input
           type="date"
@@ -12,7 +13,6 @@
         />
         <button class="goBtn" (click)="onDatePicked()">Go</button>
       </td>
-      <td class="cardTitle">{{ this.datePicked }}</td>
     </tr>
     <tr *ngIf="isDatePicked">
       <td class="weatherTitle">{{ this.hWeatherDesc }}</td>

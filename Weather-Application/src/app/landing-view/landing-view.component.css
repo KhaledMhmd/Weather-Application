@@ -59,6 +59,18 @@
   margin-bottom: 20px;
 }
 
+.cityLink {
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+}
+.cityLink:hover,
+.cityLink:visited {
+  text-decoration: none;
+}
+.contain {
+  height: fit-content;
+}
 @media all and (min-width: 768px) {
   .dayMaxMin {
     display: flex;

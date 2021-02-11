@@ -87,6 +87,7 @@ export class DashboardViewComponent implements OnInit {
             ],
           },
           options: {
+            responsive: true,
             legend: {
               display: false,
             },
@@ -135,8 +136,7 @@ export class DashboardViewComponent implements OnInit {
     this.svg = d3
       .select('figure#bar')
       .append('svg')
-      .attr('width', this.width + this.margin * 2)
-      .attr('height', this.height + this.margin * 2)
+      .attr('viewBox', `0 0 530 530`)
       .append('g')
       .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
 
