@@ -68,9 +68,7 @@
 .cityLink:visited {
   text-decoration: none;
 }
-.contain {
-  height: fit-content;
-}
+
 @media all and (min-width: 768px) {
   .dayMaxMin {
     display: flex;

@@ -33,16 +33,13 @@ export class DashboardViewComponent implements OnInit {
   ngOnInit() {
     const citySmall = this.route.snapshot.params['city'];
     const inputCity = citySmall.charAt(0).toUpperCase() + citySmall.slice(1);
-    console.log(inputCity);
 
     this.getWeatherService.onWeatherGet(inputCity).subscribe((data) => {
-      console.log(data);
-
       if (data.data.error || data.data.request[0].type !== 'City') {
         this.city = '';
         this.router.navigate(['/not-found/' + inputCity]);
       } else {
-        this.city = inputCity;
+        this.city = data.data.request[0].query;
 
         this.weatherData = data.data.weather.map((x: any) => {
           const container = {
@@ -59,7 +56,6 @@ export class DashboardViewComponent implements OnInit {
 
           return container;
         });
-        console.log(this.weatherData);
 
         this.createSvg();
         this.drawBars(this.weatherData);
