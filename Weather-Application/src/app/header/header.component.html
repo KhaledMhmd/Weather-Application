@@ -7,12 +7,36 @@
       class="form-control searchInput"
       type="search"
       placeholder="City Name"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'City Name'"
       aria-label="Search"
       #cityInput
     />
 
-    <button class="searchButton btn" (click)="onSearch(cityInput.value)">
+    <button
+      class="searchButton btn"
+      [ngClass]="theme === 'light' ? 'lightModeButton' : 'darkModeButton'"
+      (click)="onSearch(cityInput.value)"
+    >
       <i class="fa fa-search"></i>
     </button>
+    <div class="toggleContainer">
+      <input
+        type="checkbox"
+        class="toggle"
+        id="toggle"
+        (change)="onChangeTheme()"
+      />
+      <label
+        for="toggle"
+        class="toggleLabel"
+        [ngClass]="theme === 'light' ? 'lightModeLabel' : 'darkModeLabel'"
+      >
+        <div
+          class="toggleBall"
+          [ngClass]="theme === 'light' ? 'lightModeBall' : 'darkModeBall'"
+        ></div>
+      </label>
+    </div>
   </form>
 </nav>

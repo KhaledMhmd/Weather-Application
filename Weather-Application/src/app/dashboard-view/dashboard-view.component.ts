@@ -81,7 +81,8 @@ export class DashboardViewComponent implements OnInit {
             datasets: [
               {
                 data: this.tempHourly,
-                borderColor: '#3cba9f',
+                // borderColor: '#3cba9f',
+                borderColor: ' #7EF5FF',
                 fill: true,
                 label: 'three-hour interval temperature',
               },
@@ -189,6 +190,7 @@ export class DashboardViewComponent implements OnInit {
         'height',
         (d: { avgtempC: d3.NumberValue }) => this.height - y(d.avgtempC)
       )
-      .attr('fill', '#3cba9f');
+
+      .attr('fill', '#57ffcc');
   }
 }

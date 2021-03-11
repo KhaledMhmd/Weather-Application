@@ -1,8 +1,16 @@
-<table class="table table-striped">
+<table class="table table-striped+">
   <tbody>
     <tr *ngIf="isDashboardView">
-      <td class="cardTitle">{{ this.datePicked }}</td>
-      <td class="tableValue datePick">
+      <td
+        class="cardTitle"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+      >
+        {{ this.datePicked }}
+      </td>
+      <td
+        class="tableValue datePick"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+      >
         <input
           type="date"
           id="datePicker"
@@ -16,8 +24,20 @@
     </tr>
 
     <tr *ngIf="isDatePicked">
-      <td class="weatherTitle">{{ this.hWeatherDesc }}</td>
-      <td class="tableValue">
+      <td
+        class="weatherTitle"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
+        {{ this.hWeatherDesc }}
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
         <svg
           class="weatherIcon"
           *ngIf="this.hWeatherDesc.toLowerCase().includes('clear')"
@@ -467,8 +487,20 @@
       </td>
     </tr>
     <tr *ngIf="!isDatePicked">
-      <td class="weatherTitle">{{ this.weatherDesc }}</td>
-      <td class="tableValue">
+      <td
+        class="weatherTitle"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
+        {{ this.weatherDesc }}
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
         <svg
           class="weatherIcon"
           *ngIf="this.weatherDesc.toLowerCase().includes('clear')"
@@ -919,24 +951,100 @@
     </tr>
 
     <tr>
-      <td>Temperature</td>
-      <td class="tableValue" *ngIf="!isDatePicked">{{ this.temp }}°C</td>
-      <td class="tableValue" *ngIf="isDatePicked">{{ this.hTemp }}°C</td>
+      <td
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+      >
+        Temperature
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+        *ngIf="!isDatePicked"
+      >
+        {{ this.temp }}°C
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+        *ngIf="isDatePicked"
+      >
+        {{ this.hTemp }}°C
+      </td>
     </tr>
     <tr>
-      <td>Feels Like</td>
-      <td class="tableValue" *ngIf="!isDatePicked">{{ this.altTemp }}°C</td>
-      <td class="tableValue" *ngIf="isDatePicked">{{ this.hAltTemp }}°C</td>
+      <td
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
+        Feels Like
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+        *ngIf="!isDatePicked"
+      >
+        {{ this.altTemp }}°C
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+        *ngIf="isDatePicked"
+      >
+        {{ this.hAltTemp }}°C
+      </td>
     </tr>
     <tr>
-      <td>Humidity</td>
-      <td class="tableValue" *ngIf="!isDatePicked">{{ this.humidity }}%</td>
-      <td class="tableValue" *ngIf="isDatePicked">{{ this.hHumidity }}%</td>
+      <td
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+      >
+        Humidity
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+        *ngIf="!isDatePicked"
+      >
+        {{ this.humidity }}%
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="theme === 'light' ? 'lightModeTableOdd' : 'darkModeTableOdd'"
+        *ngIf="isDatePicked"
+      >
+        {{ this.hHumidity }}%
+      </td>
     </tr>
     <tr>
-      <td>Wind</td>
-      <td class="tableValue" *ngIf="!isDatePicked">{{ this.wind }} km/hr</td>
-      <td class="tableValue" *ngIf="isDatePicked">{{ this.hWind }} km/hr</td>
+      <td
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+      >
+        Wind
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+        *ngIf="!isDatePicked"
+      >
+        {{ this.wind }} km/hr
+      </td>
+      <td
+        class="tableValue"
+        [ngClass]="
+          theme === 'light' ? 'lightModeTableEven' : 'darkModeTableEven'
+        "
+        *ngIf="isDatePicked"
+      >
+        {{ this.hWind }} km/hr
+      </td>
     </tr>
   </tbody>
 </table>

@@ -477,7 +477,11 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button class="btn moreButton mx-auto d-block" (click)="onMoreDetails()">
+      <button
+        class="btn moreButton mx-auto d-block"
+        [ngClass]="theme === 'light' ? 'lightModeButton' : 'darkModeButton'"
+        (click)="onMoreDetails()"
+      >
         Weather Details
       </button>
     </div>

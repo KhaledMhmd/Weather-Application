@@ -7,7 +7,13 @@ nav {
 
 .searchButton {
   color: #ffffff;
-  background-color: #170853;
+}
+
+.lightModeButton {
+  background-color: #3eadfd;
+}
+.darkModeButton {
+  background-color: #321a8f;
 }
 .pageTitle {
   font-size: 1.5rem;
@@ -15,25 +21,70 @@ nav {
 }
 
 .searchInput {
-  width: 70%;
+  width: 57%;
 }
 
 .form-inline {
   justify-content: flex-end;
   width: 55%;
+  flex-wrap: nowrap;
 }
 
 .navContainer {
   display: flex;
   justify-content: space-between;
 }
+.toggleContainer {
+  margin-left: 5px;
+  display: flex;
+}
+.toggleLabel {
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+}
+
+.toggle {
+  visibility: hidden;
+}
+
+.toggleBall {
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+
+  transition: transform 0.2s linear;
+}
+.lightModeLabel {
+  background-color: #fff;
+}
+.lightModeBall {
+  background-color: #3eadfd;
+  transform: translateX(0px);
+}
+.darkModeLabel {
+  background-color: #321a8f;
+}
+.darkModeBall {
+  transform: translateX(24px);
+  background-color: white;
+}
 
 @media all and (min-width: 576px) {
   .searchInput {
-    width: 80%;
+    width: 50%;
   }
   .form-inline {
     justify-content: flex-end;
-    width: 260px;
+    width: 360px;
+  }
+  .toggleContainer {
+    margin-left: 40px;
   }
 }

@@ -1,4 +1,4 @@
-<div class="mainBody">
+<div class="mainBody" [ngClass]="theme === 'light' ? 'lightMode' : 'darkMode'">
   <app-header></app-header>
   <div class="container mainContainer">
     <div class="row">

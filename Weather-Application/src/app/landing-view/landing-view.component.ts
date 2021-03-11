@@ -18,6 +18,7 @@ export class LandingViewComponent implements OnInit {
   weatherDesc: string = '';
   currentDate: any;
   currentTime: any;
+  theme: string = localStorage.getItem('theme') || 'light';
 
   constructor(
     private router: Router,
@@ -27,20 +28,28 @@ export class LandingViewComponent implements OnInit {
 
   ngOnInit() {
     const today = new Date();
-    const options = {
+    // const options = {
+    //   weekday: 'long',
+    //   month: 'long',
+    //   day: 'numeric',
+    //   year: 'numeric',
+    // };
+    this.currentDate = new Intl.DateTimeFormat('en-US', {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
       year: 'numeric',
-    };
-    this.currentDate = new Intl.DateTimeFormat('en-US', options).format(today);
+    }).format(today);
 
     const now = new Date();
-    const option = {
+    // const option = {
+    //   hour: 'numeric',
+    //   minute: 'numeric',
+    // };
+    this.currentTime = new Intl.DateTimeFormat('en-US', {
       hour: 'numeric',
       minute: 'numeric',
-    };
-    this.currentTime = new Intl.DateTimeFormat('en-US', option).format(now);
+    }).format(now);
 
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(

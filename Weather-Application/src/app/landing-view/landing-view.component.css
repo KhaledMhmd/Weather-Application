@@ -49,7 +49,6 @@
 }
 
 .moreButton {
-  background-color: #170853 !important;
   color: #ffffff;
   margin-bottom: 10px;
 }
@@ -69,6 +68,13 @@
   text-decoration: none;
 }
 
+.lightModeButton {
+  background-color: #3eadfd;
+}
+
+.darkModeButton {
+  background-color: #321a8f;
+}
 @media all and (min-width: 768px) {
   .dayMaxMin {
     display: flex;

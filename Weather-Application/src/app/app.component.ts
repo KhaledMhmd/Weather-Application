@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Weather-Application';
+  theme: string = localStorage.getItem('theme') || 'light';
 }
